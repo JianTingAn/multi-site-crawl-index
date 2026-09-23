@@ -1,50 +1,22 @@
-﻿# multi-site-crawl-index
+# 多站点抓取索引
 
-This is an independent open-source project in the Baidu Crawler Open Source series. It focuses on real crawler observability, including access-log analysis, Sitemap and robots.txt checks, HTTP status monitoring, canonical validation, response performance, and content-change detection.
+统一整理多个站点的 Sitemap、robots.txt、访问日志和技术检查结果，适合管理多域名或多项目的抓取可见性。
 
-## Detailed introduction
+## 核心功能
+- 按站点保存抓取统计
+- 对比不同域名的错误率和响应速度
+- 统一记录重要 URL 与 Sitemap
+- 输出适合团队协作的 JSON 数据
 
-The tool is designed for site owners, developers, and SEO operations teams who need reproducible evidence about how a site is being accessed. It analyzes local CSV or JSON-derived data and produces machine-readable results. The User-Agent classifier is only a log label; it does not prove that a request came from official search-engine infrastructure.
-
-This project does not forge search-engine identity, generate fake spider traffic, manipulate rankings, bypass access controls, or promise indexing results. Use low request rates, respect robots.txt, and monitor only sites and data you are permitted to inspect.
-
-## Features
-
-- Offline demo mode with deterministic sample data
-- CSV input with url,status,user_agent,ms columns
-- Status-code aggregation and slow-request count
-- Search-bot User-Agent classification
-- JSON output for scheduled jobs and dashboards
-- No cloud service, credential, or third-party dependency required
-
-## Quick start
-
-Requires Python 3.10 or newer:
-
-`powershell
+## 使用
+```powershell
 python tool.py --demo
-python tool.py --demo --json
 python tool.py --input sample.csv --json
-`
+```
+多站点管理应为每个站点设置清晰的边界、频率和负责人，避免重复检查造成不必要的服务器压力。
 
-## CSV format
+官网：https://jta.mobi  
+QQ群：1039545483
 
-`csv
-url,status,user_agent,ms
-https://example.com/,200,Mozilla/5.0 (compatible; Baiduspider/2.0),180
-`
-
-## Result interpretation
-
-- statuses: counts by HTTP status. Review 4xx, 5xx, and unexpected redirects.
-- ot_classes: a User-Agent classification only, not an authenticity verification.
-- slow_requests: responses taking at least 1000 milliseconds.
-
-## Contact
-
-Website: https://jta.mobi  
-QQ group: 1039545483
-
-## License
-
+## 许可证
 MIT License
